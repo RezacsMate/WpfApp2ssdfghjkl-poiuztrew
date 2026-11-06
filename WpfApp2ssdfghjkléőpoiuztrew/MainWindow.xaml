@@ -1,0 +1,241 @@
+﻿<Window x:Class="WpfApp2ssdfghjkléőpoiuztrew.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2ssdfghjkléőpoiuztrew"
+        mc:Ignorable="d"
+        Title="Mozijegy-foglalás" Height="850" Width="600" Background="#F1F3F6" WindowStartupLocation="CenterScreen">
+    <!-- 2. feladat -->
+    <!-- Hozz létre egy Gridet, amely 2 oszlopból és 8 sorból áll! -->
+    <!-- Az első oszlop szélessége legyen 180 pixel, a második töltse ki a fennmaradó helyet! -->
+    <!-- A Grid margója minden oldalon 40 pixel legyen! -->
+    <!-- A sorok magassága rendre: 70, 65, 65, 65, 60, 45, 70 és 60 pixel legyen! -->
+    <Window.Resources>
+        <!-- 6. feladat -->
+        <!-- A Window.Resources részben készíts általános Style-t a Label vezérlőkhöz! -->
+        <!-- A betűméret legyen 16, a betűszín #30343B! -->
+        <!-- A szöveg függőlegesen középre igazítva jelenjen meg! -->
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#30343B"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <!-- 7. feladat -->
+        <!-- A Window.Resources részben készíts általános Style-t a TextBox vezérlőkhöz! -->
+        <!-- A magasság legyen 38 pixel, a betűméret 16, a háttérszín White! -->
+        <!-- A keret színe legyen #AAB3BF, vastagsága 1 pixel! -->
+        <!-- A belső margó legyen 8 pixel! -->
+        <!-- A vezérlők függőlegesen középre igazítva jelenjenek meg! -->
+        <!-- Ugyanebben a Style-ban készíts egy Triggert! -->
+        <!-- Ha a TextBox fókuszba kerül, a háttérszíne változzon LightYellow-ra, -->
+        <!-- a keretének színe pedig #275D91-re! -->
+        <!-- Ha elveszíti a fókuszt, álljon vissza az eredeti formázás! -->
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#AAB3BF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="LightYellow"/>
+                    <Setter Property="BorderBrush" Value="#275D91"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- 8. feladat -->
+        <!-- A Window.Resources részben készíts általános Style-t a ComboBox vezérlőkhöz! -->
+        <!-- A magasság legyen 38 pixel, a betűméret 16, a háttérszín White! -->
+        <!-- A keret színe legyen #AAB3BF, vastagsága 1 pixel! -->
+        <!-- A vezérlő függőlegesen középre igazítva jelenjen meg! -->
+        <!-- Ugyanebben a Style-ban készíts egy Triggert! -->
+        <!-- Ha a ComboBox fölé viszik az egeret, a keret színe változzon #275D91-re! -->
+        <!-- Ha az egér elhagyja a vezérlőt, álljon vissza az eredeti keretszín! -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#AAB3BF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#275D91"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <!-- 9. feladat -->
+        <!-- A Window.Resources részben készíts általános Style-t a CheckBox vezérlőkhöz! -->
+        <!-- A betűméret legyen 16, a betűszín #30343B! -->
+        <!-- A vezérlő függőlegesen középre igazítva jelenjen meg! -->
+        <Style TargetType="CheckBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#30343B"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <!-- 10. feladat -->
+        <!-- A Window.Resources részben készíts vipInfoStyle nevű külön Style-t! -->
+        <!-- A stílus a vipInfo Label vezérlőre vonatkozzon! -->
+        <!-- A betűméret legyen 15, a betűszín DarkGreen, a betűstílus Bold! -->
+        <!-- A felirat alapértelmezetten legyen elrejtve (Collapsed)! -->
+        
+        <!-- Binding és DataTrigger segítségével állítsd be, hogy -->
+        <!-- a felirat csak akkor jelenjen meg, ha a vipCheckBox be van jelölve! -->
+        <!-- Ha a jelölést eltávolítják, a felirat ismét tűnjön el! -->
+        <Style x:Key="vipInfoStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="DarkGreen"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsChecked, ElementName=vipCheckBox }" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <!-- 11. feladat -->
+        <!-- A Window.Resources részben készíts általános Style-t a Button vezérlőkhöz! -->
+        <!-- A szélesség legyen 280 pixel, a magasság 45 pixel! -->
+        <!-- A háttérszín legyen #275D91, a betűszín White! -->
+        <!-- A betűméret legyen 18, a betűstílus Bold! -->
+        <!-- A gomb vízszintesen és függőlegesen középre igazítva jelenjen meg! -->
+        <!-- Ugyanebben a Style-ban készíts egy Triggert, amely -->
+        <!-- az egér fölé vitelekor 20-ra növeli a betűméretet! -->
+        <!-- A gomb alapértelmezetten legyen engedélyezett! -->
+        <!-- Binding és DataTrigger segítségével tiltsd le a gombot, ha -->
+        <!-- a customerInput TextBox üres, -->
+        <!-- a ticketInput TextBox üres, -->
+        <!-- vagy a movieComboBox vezérlőben nincs kiválasztott film! -->
+        <!-- A ComboBox ellenőrzéséhez használd a SelectedIndex tulajdonságot! -->
+        <!-- A gomb csak akkor legyen elérhető, ha mindhárom feltétel teljesül! -->
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="280"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Background" Value="#275D91"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="IsEnabled" Value="True"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontSize" Value="20"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding Text ,ElementName=customerInput}" Value="">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Text, ElementName=ticketInput}" Value="">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding SelectedIndex, ElementName=movieComboBox}" Value="-1">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+                
+            </Style.Triggers>
+            
+
+        </Style>
+        <!-- 12. feladat -->
+        <!-- A Window.Resources részben készíts statusStyle nevű külön Style-t! -->
+        <!-- A stílus a statusLabel vezérlőre vonatkozzon! -->
+        <!-- A betűméret legyen 18, a betűstílus Bold! -->
+        <!-- A szöveg vízszintesen és függőlegesen középre igazítva jelenjen meg! -->
+        <!-- Alapértelmezetten a "Foglalásra kész!" felirat jelenjen meg Green színnel! -->
+        <!-- Binding és DataTrigger segítségével figyeld a bookingButton IsEnabled tulajdonságát! -->
+        <!-- Ha a gomb le van tiltva, a felirat változzon -->
+        <!-- "Kérjük, töltsd ki az összes mezőt!" szövegre, a betűszín pedig legyen Red! -->
+        <!-- Ha a gomb ismét engedélyezett, álljon vissza az eredeti szöveg és szín! -->
+        <Style x:Key="statusStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Content" Value="Foglalásra kész!"/>
+            <Setter Property="Foreground" Value="Green"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsEnabled, ElementName=bookingButton}" Value="False">
+                    <Setter Property="Content" Value="Kérjük, töltsd ki az összes mezőt!"/>
+                    <Setter Property="Foreground" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="40">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="65" />
+            <RowDefinition Height="65" />
+            <RowDefinition Height="65" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <!-- 3. feladat -->
+        <!-- A Grid 0. sorába helyezz el egy TextBlock vezérlőt "Mozijegy-foglalás" felirattal! -->
+        <!-- A felirat mindkét oszlopot foglalja el! -->
+        <!-- A betűmérete legyen 30, betűstílusa Bold, betűszíne #275D91! -->
+        <!-- A felirat vízszintesen és függőlegesen középre igazítva jelenjen meg! -->
+        <TextBlock Grid.Row="0" Text="Mozijegy-foglalás" Grid.ColumnSpan="2" FontSize="30" FontWeight="Bold" Foreground="#275D91" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <!-- 4. feladat -->
+        <!-- Helyezd el a következő vezérlőket a Grid megfelelő soraiban és oszlopaiban! -->
+        <!-- 1. sor: "Teljes név:" Label és customerInput nevű TextBox. -->
+        <!-- 2. sor: "Film címe:" Label és movieComboBox nevű ComboBox. -->
+        <!-- 3. sor: "Jegyek száma:" Label és ticketInput nevű TextBox. -->
+        <!-- 4. sor: vipCheckBox nevű CheckBox "VIP ülőhelyet kérek" felirattal. -->
+        <!-- 5. sor: vipInfo nevű Label "VIP jegy kiválasztva!" felirattal. -->
+        <!-- 6. sor: bookingButton nevű Button "Foglalás" felirattal. -->
+        <!-- 7. sor: statusLabel nevű Label. -->
+        <!-- A Label és a hozzá tartozó beviteli vezérlő külön oszlopba kerüljön! -->
+        <!-- A CheckBox, a vipInfo, a Button és a statusLabel mindkét oszlopot foglalja el! -->
+        <!-- A TextBox vezérlők kezdetben legyenek üresek! -->
+        <Label Content="Teljes név:" Grid.Row="1" Grid.Column="0"/>
+        <TextBox Name="customerInput" Grid.Row="1" Grid.Column="1" Text=""/>
+
+        <Label Content="Film címe:" Grid.Row="2" Grid.Column="0"/>
+        <ComboBox Name="movieComboBox" Grid.Row="2" Grid.Column="1" SelectedIndex="-1">
+            <!-- 5. feladat -->
+            <!-- A movieComboBox vezérlőben helyezd el a következő filmeket ComboBoxItem elemekként! -->
+            <!-- Dűne: Második rész -->
+            <!-- Oppenheimer -->
+            <!-- Avatar: A víz útja -->
+            <!-- Csillagok között -->
+            <!-- A sötét lovag -->
+            <!-- A ComboBox kezdetben ne tartalmazzon kiválasztott elemet! -->
+            <!-- A felhasználó a legördülő listából választhassa ki a kívánt filmet! -->
+            <ComboBoxItem Content="Dűne: Második rész"/>
+            <ComboBoxItem Content="Oppenheimer"/>
+            <ComboBoxItem Content="Avatar: A víz útja"/>
+            <ComboBoxItem Content="Csillagok között"/>
+            <ComboBoxItem Content="A sötét lovag"/>
+        </ComboBox>
+
+        <Label Content="Jegyek száma:" Grid.Row="3" Grid.Column="0"/>
+        <TextBox Name="ticketInput" Grid.Row="3" Grid.Column="1" Text=""/>
+
+        <CheckBox Name="vipCheckBox" Content="VIP ülőhelyet kérek" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+
+        <Label Content="VIP jegy kiválasztva!" Name="vipInfo" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource vipInfoStyle}"/>
+
+        <Button Name="bookingButton" Content="Foglalás" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" />
+
+        <Label Name="statusLabel" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource statusStyle}"/>
+
+
+    </Grid>
+
+
+</Window>
